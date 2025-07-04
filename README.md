@@ -60,10 +60,9 @@ Pull Bot 会反复触发无效的 PR 和垃圾邮件，严重干扰项目维护�
 
 **推荐做法：**
 
-建议在 fork 的仓库中启用本仓库自带的 GitHub Actions 自动同步功能（见 `.github/workflows/sync.yml`）。 
+建议在 fork 的仓库中启用本仓库自带的 GitHub Actions 自动同步功能（见 `.github/workflows/sync.yml`）。
 
 如需手动同步主仓库更新，也可以使用 GitHub 官方的 [Sync fork](https://docs.github.com/cn/github/collaborating-with-issues-and-pull-requests/syncing-a-fork) 功能。
-
 
 ## 📋 详细部署指南
 
@@ -101,6 +100,7 @@ Pull Bot 会反复触发无效的 PR 和垃圾邮件，严重干扰项目维护�
 > 如需启用密码保护，可在 Render 控制台的环境变量中手动添加 `PASSWORD` 和/或 `ADMINPASSWORD`。
 
 ### Docker
+
 ```
 docker run -d \
   --name libretv \
@@ -127,11 +127,13 @@ services:
       - ADMINPASSWORD=${PASSWORD:-your_adminpassword} # 可将 your_adminpassword 修改为你想要的密码，默认为 your_adminpassword
     restart: unless-stopped
 ```
+
 启动 LibreTV：
 
 ```bash
 docker compose up -d
 ```
+
 访问 `http://localhost:8899` 即可使用。
 
 ### 本地开发环境
@@ -159,10 +161,10 @@ npm run dev
 
 要为您的 LibreTV 实例添加密码保护，可以在部署平台上设置环境变量：
 
-**环境变量名**: `PASSWORD` 
+**环境变量名**: `PASSWORD`
 **值**: 您想设置的密码
 
-**环境变量名**: `ADMINPASSWORD` 
+**环境变量名**: `ADMINPASSWORD`
 **值**: 您想设置的密码
 
 各平台设置方法：
@@ -177,10 +179,12 @@ npm run dev
 ### API兼容性
 
 LibreTV 支持标准的苹果 CMS V10 API 格式。添加自定义 API 时需遵循以下格式：
+
 - 搜索接口: `https://example.com/api.php/provide/vod/?ac=videolist&wd=关键词`
 - 详情接口: `https://example.com/api.php/provide/vod/?ac=detail&ids=视频ID`
 
 **添加 CMS 源**:
+
 1. 在设置面板中选择"自定义接口"
 2. 接口地址: `https://example.com/api.php/provide/vod`
 
