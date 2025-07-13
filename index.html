@@ -432,6 +432,14 @@
     <!-- PWA 注册 -->
     <script src="js/pwa-register.js"></script>
 
+    <script>
+        document.getElementById('searchInput').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          search()
+        }
+    });
+    </script>
+
     <!-- 环境变量注入脚本 -->
     <script>
         // 创建全局环境变量对象

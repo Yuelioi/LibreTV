@@ -186,7 +186,7 @@ function checkAdultAPIsSelected() {
     const hasAdultSelected = adultBuiltinCheckboxes.length > 0 || customApiCheckboxes.length > 0;
 
     const yellowFilterToggle = document.getElementById('yellowFilterToggle');
-    const yellowFilterContainer = yellowFilterToggle.closest('div').parentNode;
+    // const yellowFilterContainer = yellowFilterToggle.closest('div').parentNode;
     const filterDescription = yellowFilterContainer.querySelector('p.filter-description');
 
     // 如果选择了成人API，禁用黄色内容过滤器
@@ -196,7 +196,7 @@ function checkAdultAPIsSelected() {
         localStorage.setItem('yellowFilterEnabled', 'false');
 
         // 添加禁用样式
-        yellowFilterContainer.classList.add('filter-disabled');
+        // yellowFilterContainer.classList.add('filter-disabled');
 
         // 修改描述文字
         if (filterDescription) {
@@ -211,7 +211,7 @@ function checkAdultAPIsSelected() {
     } else {
         // 启用黄色内容过滤器
         yellowFilterToggle.disabled = false;
-        yellowFilterContainer.classList.remove('filter-disabled');
+        // yellowFilterContainer.classList.remove('filter-disabled');
 
         // 恢复原来的描述文字
         if (filterDescription) {
@@ -219,10 +219,10 @@ function checkAdultAPIsSelected() {
         }
 
         // 移除提示信息
-        const existingTooltip = yellowFilterContainer.querySelector('.filter-tooltip');
-        if (existingTooltip) {
-            existingTooltip.remove();
-        }
+        // const existingTooltip = yellowFilterContainer.querySelector('.filter-tooltip');
+        // if (existingTooltip) {
+        //     existingTooltip.remove();
+        // }
     }
 }
 
@@ -531,10 +531,11 @@ function toggleSettings(e) {
 // 设置事件监听器
 function setupEventListeners() {
     // 回车搜索
-    document.getElementById('searchInput').addEventListener('keypress', function (e) {
+    document.getElementById('searchInput').addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
             search();
         }
+        console.log(e)
     });
 
     // 点击外部关闭设置面板和历史记录面板
